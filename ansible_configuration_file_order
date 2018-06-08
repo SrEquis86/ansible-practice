@@ -1,0 +1,9 @@
+Changes can be made and used in a configuration file which will be processed in the following order:
+
+ANSIBLE_CONFIG (an environment variable)
+ansible.cfg (in the current directory)
+.ansible.cfg (in the home directory)
+/etc/ansible/ansible.cfg
+
+
+https://docs.ansible.com/ansible/latest/installation_guide/intro_configuration.html
