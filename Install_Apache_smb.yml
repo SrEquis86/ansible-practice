@@ -1,0 +1,33 @@
+---
+- hosts: nodo1
+  tasks:
+    
+    - name: Instalar Apache WebServer
+      yum: name=httpd state=latest
+    
+    - name: Instalar Samba
+      yum:
+        name: samba
+        state: latest
+
+    - name: Iniciar Servicios
+      service:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      with_items:
+        - httpd
+        - smb
+
+#    - name: Abrir firewall para trafico http
+#      firewalld:
+#        service: http
+#        permanent: true
+#        immediate: true
+#        state: enabled
+
+    - name: Copiar contenido de web inicial
+      copy:
+        content: "Bienvenido a mi web"
+        dest: /var/www/html/index.html
+...
