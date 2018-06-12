@@ -1,0 +1,15 @@
+---
+- hosts: nodo2
+  vars_files:
+    - vars1.yml
+  tasks:
+    - name: instalar {{ db_pkg }}
+      yum:
+        name: "{{ db_pkg }}"
+        state: latest
+    - name: Iniciar {{ db_srv }}
+      service:
+        name: "{{ db_srv }}"
+        state: started
+        enabled: true
+...
