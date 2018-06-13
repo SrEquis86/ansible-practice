@@ -1,0 +1,11 @@
+---
+- hosts: nodo1
+  vars_files:
+    - vars.yml
+  tasks: 
+    - name: crear usuarios
+      user:
+        name: "{{ users.rob.first_name }}"
+        home: "{{ users.rob.home_dir }}"
+        comment: "{{ users.rob.first_name }} {{ users.rob.last_name }}"
+...

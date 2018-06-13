@@ -1,0 +1,16 @@
+---
+- hosts: nodo1
+  tasks:
+    - name: Instalar usando facts
+      yum:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - "{{ ansible_local.first.pkg.db_pkg }}"
+        - "{{ ansible_local.first.pkg.web_pkg }}"
+    - name: start service
+      service: 
+        name: "{{ ansible_local.first.pkg.web_srv }}"
+        state: started
+        enabled: true
+...
